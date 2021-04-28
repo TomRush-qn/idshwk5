@@ -34,14 +34,12 @@ def initData(filename):
             line = line.strip()
             if line.startswith("#") or line =="":
                 continue
-            tokens = line.split(",")
-            
+            tokens = line.split(",") 
             name = tokens[0]
             label = tokens[1]
             length= len(name)
             entropy=entropy(name)
-            numbers= number(name)  
-
+            numbers= number(name) 
             domainlist.append(Domain(name,label,length,numbers,entropy))
 
 def main():
@@ -51,10 +49,8 @@ def main():
     for item in domainlist:
         featureMatrix.append(item.returnData())
         labelList.append(item.returnLabel())
-
     clf = RandomForestClassifier(random_state=0)
     clf.fit(featureMatrix,labelList)
-
     file1=open("test.txt")
     file2=open("result.txt","w")
     for line in file1:
@@ -62,12 +58,10 @@ def main():
         if line.startswith("#") or line =="":
             continue
         tokens_test = line.split(",")
-        
         name_test = tokens_test[0]
         length_test = len(name_test)
         numbers_test= number(name_test)
         entropy_test = entropy(name_test)
-        
         if clf.predict([[length_test,numbers_test,entropy_test]])==0:
             label_test1 = "notdga"
             content=line+","+label_test1
