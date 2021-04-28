@@ -23,7 +23,7 @@ def entropy(s):
     _, counts = np.unique(list(s), return_counts=True)
     total = sum(counts)
     percent = list(map(lambda x: x / total, counts))
-    return sum(-n * np.log(n) for n in percent)s
+    return sum(-n * np.log(n) for n in percent)
 
 def number(s):
     return sum(c.isdigit() for c in s)
