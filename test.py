@@ -38,9 +38,9 @@ def initData(filename):
             name = tokens[0]
             label = tokens[1]
             length= len(name)
-            entropy=entropy(name)
+            entropy1=entropy(name)
             numbers= number(name) 
-            domainlist.append(Domain(name,label,length,numbers,entropy))
+            domainlist.append(Domain(name,label,length,numbers,entropy1))
 
 def main():
     initData("train.txt")
